@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>es.unican.is2</groupId>
-  <artifactId>tiendas-business</artifactId>
+  <artifactId>tiendas-main</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>tiendas-business</name>
+  <name>tiendas-main</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -23,7 +23,7 @@
     </dependency>
     <dependency>
     	<groupId>es.unican.is2</groupId>
-    	<artifactId>tiendas-common</artifactId>
+    	<artifactId>tiendas-business</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -34,6 +34,11 @@
     <dependency>
     	<groupId>es.unican.is2</groupId>
     	<artifactId>tiendas-dao</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+    	<groupId>es.unican.is2</groupId>
+    	<artifactId>tiendas-common</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
