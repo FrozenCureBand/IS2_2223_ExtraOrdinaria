@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @SuppressWarnings("serial")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="Tienda")
+@XmlType(name="tienda")
 
 @XmlAccessorOrder(XmlAccessOrder.UNDEFINED)
 public class Tienda implements Serializable {
@@ -67,7 +67,12 @@ public class Tienda implements Serializable {
 	 * @return Total mensual sueldos 
 	 */
 	public double gastoMensualSueldos() {
-	 //TODO
-		return 0;
+		double gastoTotal = 0;
+
+	    for (Empleado empleado : empleados) {
+	        gastoTotal += empleado.sueldo();
+	    }
+
+	    return gastoTotal;
 	}
 }

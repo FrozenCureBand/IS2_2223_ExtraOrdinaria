@@ -32,5 +32,6 @@ public interface IGestionTiendas {
 	 * 			null si no existe
 	 */
 	public Tienda tienda(String nombre);
-
+	
+	
 }

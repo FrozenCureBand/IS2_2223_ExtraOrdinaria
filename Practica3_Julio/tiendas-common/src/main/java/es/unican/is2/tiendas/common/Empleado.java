@@ -1,6 +1,7 @@
 package es.unican.is2.tiendas.common;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import javax.xml.bind.annotation.XmlAccessOrder;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -95,8 +96,34 @@ public class Empleado {
 	 * Retorna el sueldo bruto del empleado
 	 */
 	public double sueldo() {
-		//TODO
-		return 0;
+		double sueldoBase;
+
+	    if (categoria == Categoria.DEPENDIENTE) {
+	        sueldoBase = 1000; // Sueldo base para empleados en prácticas
+	    } else if (categoria == Categoria.ENCARGADO) {
+	        sueldoBase = 1200; // Sueldo base para empleados fijos
+
+	        // Añadir complemento por antigüedad
+	        int antiguedad = Period.between(fechaContrato, LocalDate.now()).getYears();
+	        if (antiguedad > 5) {
+	            sueldoBase += 50;
+	        }
+	        if (antiguedad > 10) {
+	            sueldoBase += 100;
+	        }
+	        if (antiguedad > 15) {
+	            sueldoBase += 150;
+	        }
+	    } else {
+	        sueldoBase = 0; // Categoría no válida, sueldo base igual a 0
+	    }
+
+	    // Aplicar reducción por baja
+	    if (baja) {
+	        sueldoBase *= 0.75; // Reducción del 25%
+	    }
+
+	    return sueldoBase;
 	}
 	
 }

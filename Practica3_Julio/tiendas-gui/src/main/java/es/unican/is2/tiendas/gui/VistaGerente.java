@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JList;
-
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 import java.awt.Color;
@@ -97,7 +97,7 @@ public class VistaGerente extends JFrame {
 		txtNombreTienda.setBounds(10, 51, 113, 20);
 		contentPane.add(txtNombreTienda);
 		txtNombreTienda.setColumns(10);
-		txtNombreTienda.setName("txtDniContribuyente");
+		//txtNombreTienda.setName("txtDniContribuyente");
 
 		JLabel lblNombreTienda = new JLabel("Nombre Tienda");
 		lblNombreTienda.setBounds(21, 27, 139, 14);
@@ -107,7 +107,7 @@ public class VistaGerente extends JFrame {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				rellenaDatosTienda(txtNombreTienda.getText());
+				rellenaDatosTienda(txtNombreTienda.getText().toString());			
 			}
 		});
 		btnBuscar.setBounds(21, 122, 89, 23);
@@ -119,7 +119,7 @@ public class VistaGerente extends JFrame {
 	private void rellenaDatosTienda(String nombre) {
 		Tienda t = tiendas.tienda(nombre);
 		if (t != null) {
-			txtDireccionTienda.setText(t.getNombre());
+			txtDireccionTienda.setText(t.getDireccion().toString());
 			txtTotalSueldos.setText(Double.toString(t.gastoMensualSueldos()));
 			listModel.removeAllElements();
 			for (int i = 0; i < t.getEmpleados().size() - 1; i++) {
