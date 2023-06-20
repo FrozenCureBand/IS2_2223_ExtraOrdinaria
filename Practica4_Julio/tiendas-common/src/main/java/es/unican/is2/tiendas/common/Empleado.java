@@ -99,28 +99,33 @@ public class Empleado {
 		double sueldoBase;
 
 	    if (categoria == Categoria.DEPENDIENTE) {
-	        sueldoBase = 1000; // Sueldo base para empleados en prácticas
+	        sueldoBase = 1000; // Sueldo base para empleados DEPENDIENTES
 	    } else if (categoria == Categoria.ENCARGADO) {
-	        sueldoBase = 1200; // Sueldo base para empleados fijos
+	        sueldoBase = 1200; // Sueldo base para ENCARGADOS
+	        
+	     // Aplicar reducción por baja
+		    if (baja) {
+		        sueldoBase *= 0.75; // Reducción del 25%
+		    }
 
 	        // Añadir complemento por antigüedad
 	        int antiguedad = Period.between(fechaContrato, LocalDate.now()).getYears();
-	        if (antiguedad > 5) {
-	            sueldoBase += 50;
-	        }
-	        if (antiguedad > 10) {
-	            sueldoBase += 100;
-	        }
 	        if (antiguedad > 15) {
-	            sueldoBase += 150;
-	        }
+                sueldoBase += 150;
+                return sueldoBase;
+            }
+            
+            if (antiguedad > 10) {
+                sueldoBase += 100;
+                return sueldoBase;
+            }
+            
+            if (antiguedad > 5) {
+                sueldoBase += 50;
+                return sueldoBase;
+            }
 	    } else {
 	        sueldoBase = 0; // Categoría no válida, sueldo base igual a 0
-	    }
-
-	    // Aplicar reducción por baja
-	    if (baja) {
-	        sueldoBase *= 0.75; // Reducción del 25%
 	    }
 
 	    return sueldoBase;
