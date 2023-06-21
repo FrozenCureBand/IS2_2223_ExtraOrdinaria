@@ -12,11 +12,9 @@ public class IListaOrdenadaAcotadaTest{
 		ListaOrdenadaAcotada<String> loa = new ListaOrdenadaAcotada<String>();
 		//Añadimos 5 elementos
 		
-		loa.add("A");
-		loa.add("A");
-		loa.add("A");
-		loa.add("A");
-		loa.add("A");
+		for (int i = 0; i < 5; i++) {
+			loa.add("A");
+		}
 		
 		int tamañolista = loa.size();
 		assertEquals(5, tamañolista);
@@ -27,26 +25,16 @@ public class IListaOrdenadaAcotadaTest{
 		ListaOrdenadaAcotada<String> loa = new ListaOrdenadaAcotada<String>();
 		//Max Instanciado es de 10 elementos
 		//Añadimos 11 para para ocupar mas de su tamaño
-		int tamañolista = loa.size();
-		
 		try {
-            loa.add("A");
-	 		loa.add("A");
-			loa.add("A");
-			loa.add("A");
-			loa.add("A");
-			loa.add("A");
-			loa.add("A");
-			loa.add("A");
-			loa.add("A");
-			loa.add("A");
-			loa.add("A");
+			for (int i = 0; i < 11; i++) {
+				loa.add("A");
+			}
 	         fail("Should have thrown an exception");
 	     } catch (final RuntimeException e) {
 	         assertTrue(true);
 	     }
 	   } 
 		
-	}
+}
 	
 
