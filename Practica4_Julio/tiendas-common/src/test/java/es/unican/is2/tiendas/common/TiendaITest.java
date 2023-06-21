@@ -5,7 +5,7 @@ import es.unican.is2.tiendas.dao.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TiendaTest {
+public class TiendaITest {
 
     private Tienda tienda;
     private Empleado empleado;
