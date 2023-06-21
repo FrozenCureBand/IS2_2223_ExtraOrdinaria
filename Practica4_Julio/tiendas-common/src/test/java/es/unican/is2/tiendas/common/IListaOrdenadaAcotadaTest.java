@@ -1,41 +1,52 @@
 package es.unican.is2.tiendas.common;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.Test;
 
-public class IListaOrdenadaAcotadaTest implements IListaOrdenadaAcotada{
-	
-	
+public class IListaOrdenadaAcotadaTest{
 
 	@Test
-	public final void test() {
-		fail("Not yet implemented"); // TODO
-	}
-	@Test
-	public Object get(int indice) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Test
-	public void add(Object elemento) {
+	public final void testTamañoLista() {
+		ListaOrdenadaAcotada<String> loa = new ListaOrdenadaAcotada<String>();
+		//Añadimos 5 elementos
 		
-
+		loa.add("A");
+		loa.add("A");
+		loa.add("A");
+		loa.add("A");
+		loa.add("A");
+		
+		int tamañolista = loa.size();
+		assertEquals(5, tamañolista);
 	}
+	
 	@Test
-	public Object remove(int indice) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Test
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Test
-	public void clear() {
-		// TODO Auto-generated method stub
+	public final void testOverFlowLista() {
+		ListaOrdenadaAcotada<String> loa = new ListaOrdenadaAcotada<String>();
+		//Max Instanciado es de 10 elementos
+		//Añadimos 11 para para ocupar mas de su tamaño
+		int tamañolista = loa.size();
+		
+		try {
+            loa.add("A");
+	 		loa.add("A");
+			loa.add("A");
+			loa.add("A");
+			loa.add("A");
+			loa.add("A");
+			loa.add("A");
+			loa.add("A");
+			loa.add("A");
+			loa.add("A");
+			loa.add("A");
+	         fail("Should have thrown an exception");
+	     } catch (final RuntimeException e) {
+	         assertTrue(true);
+	     }
+	   } 
 		
 	}
+	
 
-}
