@@ -56,6 +56,12 @@
     <artifactId>batik-xml</artifactId>
     <version>1.14</version>
 </dependency>
+<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-swing</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
   </dependencies>
  
   <build>
