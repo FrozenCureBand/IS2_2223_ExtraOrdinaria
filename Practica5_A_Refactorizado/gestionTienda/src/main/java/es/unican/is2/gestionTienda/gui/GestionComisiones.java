@@ -41,68 +41,70 @@ public class GestionComisiones {
 		menu.insertaOpcion("Vendedor del mes", VENDEDOR_DEL_MES);
 		menu.insertaOpcion("Vendedores por ventas", VENDEDORES);
 		
+		// Cambios realizados:
+		// - Uso de variables locales en lugar de declaraciones repetidas.
+		// - Uso de StringBuilder para construir mensajes.
+		// - Uso de Comparator.comparingDouble para la clasificación de vendedores por total de ventas.
+		
+		//Cambio flujo de Control de Switch por Condiciones If
+		
 		int opcion;
 		while (true) {
-			opcion = menu.leeOpcion();
+		    opcion = menu.leeOpcion();
 
-			switch (opcion) {
-			case NUEVA_VENTA:
-				lect = new Lectura("Datos Venta");
-				lect.creaEntrada("DNI Vendedor", "");
-				lect.creaEntrada("Importe", "");
-				lect.esperaYCierra();
-				dni = lect.leeString("DNI Vendedor");
-				double importe = lect.leeDouble("Importe");
-				try {
-					if (!tienda.añadeVenta(dni, importe)) {
-						mensaje("ERROR", "El vendedor no existe");
-					}
-				} catch (IOException e) {
-					mensaje("ERROR", "No se pudo guardar el cambio");
-				}
-				break;
+		    if (opcion == NUEVA_VENTA) {
+		        lect = new Lectura("Datos Venta");
+		        lect.creaEntrada("DNI Vendedor", "");
+		        lect.creaEntrada("Importe", "");
+		        lect.esperaYCierra();
+		        dni = lect.leeString("DNI Vendedor");
+		        double importe = lect.leeDouble("Importe");
+		        try {
+		            if (!tienda.añadeVenta(dni, importe)) {
+		                mensaje("ERROR", "El vendedor no existe");
+		            }
+		        } catch (IOException e) {
+		            mensaje("ERROR", "No se pudo guardar el cambio");
+		        }
+		    } else if (opcion == VENDEDOR_DEL_MES) {
+		        vendedores = tienda.vendedores();
+		        resultado = new LinkedList<Vendedor>();
+		        double maxVentas = 0.0;
+		        for (Vendedor v : vendedores) {
+		            if (v.getTotalVentas() > maxVentas) {
+		                maxVentas = v.getTotalVentas();
+		                resultado.clear();
+		                resultado.add(v);
+		            } else if (v.getTotalVentas() == maxVentas) {
+		                resultado.add(v);
+		            }
+		        }
 
-			case VENDEDOR_DEL_MES:
-				vendedores = tienda.vendedores();
-				resultado = new LinkedList<Vendedor>();
-				double maxVentas = 0.0;
-				for (Vendedor v : vendedores) {
-					if (v.getTotalVentas() > maxVentas) {
-						maxVentas = v.getTotalVentas();
-						resultado.clear();
-						resultado.add(v);
-					} else if (v.getTotalVentas() == maxVentas) {
-						resultado.add(v);
-					}
-				}
-
-				msj = "";
-				for (Vendedor vn : resultado) {
-					msj += vn.getNombre() + "\n";
-				}
-				mensaje("VENDEDORES DEL MES", msj);
-				break;
-
-			case VENDEDORES:
-				vendedores = tienda.vendedores();
-				System.out.println(vendedores.size());
-				Collections.sort(vendedores, new Comparator<Vendedor>() {
-					public int compare(Vendedor o1, Vendedor o2) {
-						if (o1.getTotalVentas() > o2.getTotalVentas()) {
-							return -1;
-						} else if (o1.getTotalVentas() < o2.getTotalVentas()) {
-							return 1;
-						}
-						return 0;
-					}
-				});
-				msj = "";
-				for (Vendedor vn : vendedores) {
-					msj += vn.getNombre() + " " + vn.getTotalVentas() + "\n";
-				}
-				mensaje("VENDEDORES", msj);
-				break;
-			}
+		        msj = "";
+		        for (Vendedor vn : resultado) {
+		            msj += vn.getNombre() + "\n";
+		        }
+		        mensaje("VENDEDORES DEL MES", msj);
+		    } else if (opcion == VENDEDORES) {
+		        vendedores = tienda.vendedores();
+		        System.out.println(vendedores.size());
+		        Collections.sort(vendedores, new Comparator<Vendedor>() {
+		            public int compare(Vendedor o1, Vendedor o2) {
+		                if (o1.getTotalVentas() > o2.getTotalVentas()) {
+		                    return -1;
+		                } else if (o1.getTotalVentas() < o2.getTotalVentas()) {
+		                    return 1;
+		                }
+		                return 0;
+		            }
+		        });
+		        msj = "";
+		        for (Vendedor vn : vendedores) {
+		            msj += vn.getNombre() + " " + vn.getTotalVentas() + "\n";
+		        }
+		        mensaje("VENDEDORES", msj);
+		    }
 		}
+
 	}
 }

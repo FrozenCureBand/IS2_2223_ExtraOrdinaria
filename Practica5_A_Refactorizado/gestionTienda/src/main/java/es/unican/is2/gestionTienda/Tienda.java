@@ -93,16 +93,16 @@ public class Tienda {
 			return false;
 		}
 		double importeFinal = importe;
+		//Se cambia el swtich por if aninados para ayudar a la lectura del codigo
 		if (v instanceof VendedorEnPlantilla) {
-			switch (((VendedorEnPlantilla) v).getTipo()) {  // Utilizar el método getTipo() en lugar de tipo()
-			case JUNIOR:
-				importeFinal += importeFinal * 0.005;
-				break;
-			case SENIOR:
-				importeFinal += importeFinal * 0.01;
-				break;
-			}
+		    TipoVendedor tipo = ((VendedorEnPlantilla) v).getTipo();
+		    if (tipo == TipoVendedor.JUNIOR) {
+		        importeFinal *= 1.005;
+		    } else if (tipo == TipoVendedor.SENIOR) {
+		        importeFinal *= 1.01;
+		    }
 		}
+
 		v.añade(importeFinal);
 		vuelcaDatos();
 		return true;
