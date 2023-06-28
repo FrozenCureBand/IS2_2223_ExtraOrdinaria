@@ -1,0 +1,1 @@
+{"gestionTienda":{"name":"gestionTienda","packages":{"es.unican.is2.gestionTienda":{"packageName":"es.unican.is2.gestionTienda","isAll":false,"classes":["Les/unican/is2/gestionTienda/Tienda;"]}}}}

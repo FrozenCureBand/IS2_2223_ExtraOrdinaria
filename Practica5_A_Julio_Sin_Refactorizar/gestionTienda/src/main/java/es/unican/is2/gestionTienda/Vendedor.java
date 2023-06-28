@@ -1,10 +1,12 @@
-package es.unican.is2.gestionTienda;
+ package es.unican.is2.gestionTienda;
 
 
 /**
  * Vendedor de la tienda. 
  * Por cada vendedor se almacenan sus datos personales 
  * y sus datos sobre ventas y comisiones
+ * WMC: 6
+ * CCog: 0
  */
 public abstract class Vendedor {
 	

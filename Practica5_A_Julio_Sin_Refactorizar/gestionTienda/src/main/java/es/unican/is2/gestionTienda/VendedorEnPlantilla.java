@@ -12,6 +12,14 @@ public class VendedorEnPlantilla extends Vendedor {
 	 * @param dni
 	 * @param tipo
 	 */
+	
+	/**
+	 * WMC: 4 (Se calcula contando el número de métodos en la clase VendedorEnPlantilla, en este caso: VendedorEnPlantilla, tipo, getDni, equals)
+	 * WMCn: 0 (No hay métodos sobrescritos en las subclases de VendedorEnPlantilla)
+	 * CBO: 1 (La clase VendedorEnPlantilla está acoplada directamente a la clase Vendedor)
+	 * CCog: 1 (La clase VendedorEnPlantilla está acoplada indirectamente a través del método equals con la clase Object)
+	 */
+
 	public VendedorEnPlantilla(String nombre, String id, String dni, TipoVendedor tipo) {
 		super(nombre, id);
 		this.tipo = tipo;

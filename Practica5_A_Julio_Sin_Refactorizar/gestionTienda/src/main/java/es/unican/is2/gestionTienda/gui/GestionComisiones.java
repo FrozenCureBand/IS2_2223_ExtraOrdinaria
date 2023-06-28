@@ -6,20 +6,31 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import es.unican.is2.gestionTienda.Tienda;
-import es.unican.is2.gestionTienda.Vendedor;
+import es.unican.is2.gestionTienda.*;
 import fundamentos.Menu;
 import fundamentos.Lectura;
 import fundamentos.Mensaje;
 
 /**
- * Gesti�n de las comisiones de vendedores de una tienda
+ * Gestin de las comisiones de vendedores de una tienda
  */
 public class GestionComisiones {
 
 	/**
 	 * Programa principal basado en menu
 	 */
+	
+	/**
+	 * Gestión de las comisiones de vendedores de una tienda.
+	 * Esta clase representa el programa principal que gestiona las comisiones de los vendedores.
+	 * Se encarga de mostrar un menú de opciones y realizar las acciones correspondientes a cada opción seleccionada.
+	 *
+	 * WMC: 1 (Se calcula contando el número de métodos en la clase GestionComisiones, en este caso: main, mensaje)
+	 * CBO: 4 (La clase GestionComisiones está acoplada directamente a las clases Tienda, Menu y Mensaje)
+	 * CCog: 8 (Suma total de controles de flujo: 8)
+	 */
+
+	
 	public static void main(String[] args) {
 		// opciones del menu
 		final int NUEVA_VENTA = 0, VENDEDOR_DEL_MES = 1, VENDEDORES = 2;
@@ -37,7 +48,7 @@ public class GestionComisiones {
 
 		// crea la ventana de menu
 		Menu menu = new Menu("Comisiones tienda");
-		menu.insertaOpcion("A�adir venta", NUEVA_VENTA);
+		menu.insertaOpcion("Anadir venta", NUEVA_VENTA);
 		menu.insertaOpcion("Vendedor del mes", VENDEDOR_DEL_MES);
 		menu.insertaOpcion("Vendedores por ventas", VENDEDORES);
 		int opcion;
