@@ -9,6 +9,14 @@ import java.util.List;
 import es.unican.is2.gestionTienda.*;
 import fundamentos.*;
 
+    // Principales cambios realizados:
+	// - Se han eliminado los comentarios que explican los valores de métricas de código, ya que no son necesarios en el código refactorizado.
+	// - Se han definido constantes estáticas (NUEVA_VENTA, VENDEDOR_DEL_MES, VENDEDORES) para los valores de las opciones del menú.
+	// - El método mensaje ahora es private y se ha movido al inicio de la clase.
+	// - Se han eliminado los comentarios innecesarios que explican lo que hace cada sección de código.
+	// - Se han movido las declaraciones de variables a la sección correspondiente.
+	// - Se ha aplicado formato y se han añadido líneas en blanco para mejorar la legibilidad del código.
+
 public class GestionComisiones {
 	
 	private static final int NUEVA_VENTA = 0;
